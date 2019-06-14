@@ -132,4 +132,6 @@ GitHub.sublime-settings
 # Ignore all local history of files
 .history
 
+### virtual environment file ###
+.venv
 # End of https://www.gitignore.io/api/sublimetext,intellij+all,visualstudiocode
