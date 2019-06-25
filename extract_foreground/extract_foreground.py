@@ -2,6 +2,7 @@ import numpy as np
 import cv2
 import re
 from os import path
+from os import remove
 
 
 def extract_foreground(video_file, file_path, alpha=0.0009):
@@ -14,18 +15,21 @@ def extract_foreground(video_file, file_path, alpha=0.0009):
 	avg_values = np.float32(source_frame)
 	output_frame = source_frame
 
+	if path.exists(file_path):
+		remove(file_path)
+
 	while has_new_frame:
 		has_new_frame, source_frame = src.read()
 		try:
 			cv2.accumulateWeighted(source_frame, avg_values, alpha)
 			output_frame = cv2.convertScaleAbs(avg_values)
+
 		except cv2.error:
 			print(cv2.error.msg)
-
-			if path.exists(file_path):
-				cv2.imwrite(file_name+'%d', output_frame)
+			cv2.imwrite(file_path, output_frame)
 			break
 	cv2.imwrite(file_path, output_frame)
+	cv2.destroyAllWindows()
 	src.release()
 
 
