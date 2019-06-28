@@ -214,3 +214,6 @@ GitHub.sublime-settings
 # 3D Images
 *.3dm
 *.max
+
+# Python cache
+__pycache__
