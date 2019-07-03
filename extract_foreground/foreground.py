@@ -4,15 +4,15 @@ from os import path
 from os import remove
 
 
-def extract(video_file, file_path, show_process, alpha=0.0009):
+def extract(video_file, output_file_path, show_process, alpha=0.0009):
     src = cv2.VideoCapture(video_file)
     has_new_frame, source_frame = src.read()
 
     avg_values = np.float32(source_frame)
     output_frame = source_frame
 
-    if path.exists(file_path):
-        remove(file_path)
+    if path.exists(output_file_path):
+        remove(output_file_path)
 
     while has_new_frame:
         try:
@@ -20,7 +20,7 @@ def extract(video_file, file_path, show_process, alpha=0.0009):
             output_frame = cv2.convertScaleAbs(avg_values)
         except cv2.error:
             print(cv2.error.msg)
-            cv2.imwrite(file_path, output_frame)
+            cv2.imwrite(output_file_path, output_frame)
             break
 
         if show_process:
@@ -29,6 +29,6 @@ def extract(video_file, file_path, show_process, alpha=0.0009):
             cv2.waitKey(1)
         has_new_frame, source_frame = src.read()
 
-    cv2.imwrite(file_path, output_frame)
+    cv2.imwrite(output_file_path, output_frame)
     cv2.destroyAllWindows()
     src.release()
