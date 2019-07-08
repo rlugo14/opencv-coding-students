@@ -1,5 +1,6 @@
 import os
 import argparse
+import extract_four_points.four_points_extractor as four_points_extractor
 
 if __name__ == '__main__':
     dirname = os.path.dirname(__file__)
@@ -12,4 +13,5 @@ if __name__ == '__main__':
                         help='prints the four extracted points')
 
     args = vars(parser.parse_args())
-
+    extractor = four_points_extractor.FourPointsExtractor(args.get("print_points"), args.get("image_file"))
+    extractor.extract_four_points_from_image()
