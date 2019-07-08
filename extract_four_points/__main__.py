@@ -9,9 +9,11 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--image_file", type=str, default=filename,
                         help='name of the image to extract four points from')
-    parser.add_argument("-v", "--print_points", type=bool, default=False,
+    parser.add_argument("-p", "--print_points", type=bool, default=False,
                         help='prints the four extracted points')
 
     args = vars(parser.parse_args())
-    extractor = four_points_extractor.FourPointsExtractor(args.get("print_points"), args.get("image_file"))
+    filename = os.path.join(dirname, args.get("image_file"))
+
+    extractor = four_points_extractor.FourPointsExtractor(args.get("print_points"), filename)
     extractor.extract_four_points_from_image()
