@@ -1,6 +1,6 @@
 import os
 import argparse
-import extract_foreground.foreground as foreground
+import extract_foreground.foreground_extractor as foreground_extractor
 
 if __name__ == '__main__':
     dirname = os.path.dirname(__file__)
@@ -18,4 +18,4 @@ if __name__ == '__main__':
 
     args = vars(parser.parse_args())
 
-    foreground.extract(args.get("source_file"), args.get("output_filename"), args.get("show_process"))
+    foreground_extractor.extract(args.get("source_file"), args.get("output_filename"), args.get("show_process"))
