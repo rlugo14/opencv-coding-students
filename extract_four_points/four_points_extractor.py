@@ -1,10 +1,11 @@
 import cv2
+import numpy as np
 
 
 class FourPointsExtractor:
     def __init__(self, image_path, print_points):
         image = cv2.imread(image_path)
-        self.print_extracted_points_flag = print_extracted_points_flag
+        self.print_extracted_points_flag = print_points
         self.data_object = {
             'corners_positions': dict(),
             'image_with_points': image.copy(),
@@ -23,12 +24,17 @@ class FourPointsExtractor:
         )
         cv2.imshow("Points Selection", self.data_object['image_to_show'])
         cv2.setMouseCallback("Points Selection", self.mouse_handler, self.data_object)
-        cv2.waitKey(0)
+        key = cv2.waitKey(0)
+
+        corners_positions_array = np.array(list(self.data_object['corners_positions'].values()))
 
         if self.print_extracted_points_flag:
-            print(self.data_object['corners_positions'])
+            print(corners_positions_array)
 
-        return self.data_object['corners_positions']
+        if key:
+            cv2.destroyWindow("Points Selection")
+
+        return corners_positions_array
 
     @staticmethod
     def mouse_handler(event, x, y, flags, data_object):
