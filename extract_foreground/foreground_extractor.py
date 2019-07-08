@@ -26,7 +26,12 @@ def extract(video_file, output_file_path, show_process, alpha=0.0009):
         if show_process:
             cv2.imshow('Source Frame', source_frame)
             cv2.imshow('Output Frame', output_frame)
-            cv2.waitKey(1)
+            key = cv2.waitKey(1) & 0xFF
+
+            if key == ord('q'):
+                cv2.destroyAllWindows()
+                break
+
         has_new_frame, source_frame = src.read()
 
     cv2.imwrite(output_file_path, output_frame)
