@@ -15,5 +15,5 @@ if __name__ == '__main__':
     args = vars(parser.parse_args())
     filename = os.path.join(dirname, args.get("image_file"))
 
-    extractor = four_points_extractor.FourPointsExtractor(args.get("print_points"), filename)
+    extractor = four_points_extractor.FourPointsExtractor(filename, args.get("print_points"))
     extractor.extract_four_points_from_image()

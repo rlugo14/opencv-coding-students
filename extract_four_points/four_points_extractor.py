@@ -2,7 +2,7 @@ import cv2
 
 
 class FourPointsExtractor:
-    def __init__(self, print_extracted_points_flag, image_path):
+    def __init__(self, image_path, print_points):
         image = cv2.imread(image_path)
         self.print_extracted_points_flag = print_extracted_points_flag
         self.data_object = {
