@@ -11,6 +11,8 @@ if __name__ == '__main__':
                         help='name of the image to extract four points from')
     parser.add_argument("-p", "--print_points", type=bool, default=True,
                         help='prints the four extracted points')
+    parser.add_argument("-s", "--show_mask", type=bool, default=True,
+                        help='shows the created binary mask')
 
     args = vars(parser.parse_args())
-    mask_creator.create_mask(args.get('image_file'), args.get('print_points'))
+    mask_creator.create_mask(args.get('image_file'), args.get('print_points'), args.get('show_mask'))

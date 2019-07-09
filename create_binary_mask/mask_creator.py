@@ -3,7 +3,7 @@ import numpy as np
 import extract_four_points.four_points_extractor as four_points_extractor
 
 
-def create_mask(image_path, print_points):
+def create_mask(image_path, print_points, show_mask):
     extractor = four_points_extractor.FourPointsExtractor(image_path, print_points)
     extracted_points = extractor.extract_four_points_from_image()
 
@@ -23,10 +23,12 @@ def create_mask(image_path, print_points):
     h, _ = cv2.findHomography(football_field_corner_points, extracted_points)
 
     transformed_image = cv2.warpPerspective(ones_image, h, image_size)
-    cv2.imshow('Transformed Image', transformed_image)
-    key = cv2.waitKey(0)
 
-    if key:
-        cv2.destroyWindow('Transformed Image')
+    if show_mask:
+        cv2.imshow('Transformed Image', transformed_image)
+        key = cv2.waitKey(0)
+
+        if key:
+            cv2.destroyWindow('Transformed Image')
 
     return transformed_image
