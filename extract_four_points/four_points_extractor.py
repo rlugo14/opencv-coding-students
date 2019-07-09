@@ -29,7 +29,7 @@ class FourPointsExtractor:
         corners_positions_array = np.array(list(self.data_object['corners_positions'].values()))
 
         if self.print_extracted_points_flag:
-            print(corners_positions_array)
+            print(self.data_object['corners_positions'])
 
         if key:
             cv2.destroyWindow("Points Selection")
