@@ -1,6 +1,6 @@
 import os
 import argparse
-import binary_mask_creator.mask_creator as mask_creator
+import create_binary_mask.mask_creator as mask_creator
 
 if __name__ == '__main__':
     dirname = os.path.dirname(__file__)
