@@ -11,3 +11,6 @@ The repository contains improved variables naming and project structure compared
 
 
 ## Everything is just a prototype and is very far from what the original idea is intended to be
+
+# Link of the Presentation
+- https://slides.com/rlugo14/deck/fullscreen
