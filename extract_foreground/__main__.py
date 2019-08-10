@@ -5,7 +5,10 @@ import extract_foreground.foreground_extractor as foreground_extractor
 if __name__ == '__main__':
     dirname = os.path.dirname(__file__)
     filename = os.path.join(dirname, 'exampleVideo.mp4')
-    output_filename = os.path.join(dirname, 'output_images/image-without-foreground.jpeg')
+    output_filepath = os.path.join(dirname, 'output_images')
+    if not os.path.isdir(output_filepath):
+        os.mkdir(output_filepath)
+    output_filename = os.path.join(output_filepath, 'image-without-foreground.jpeg')
 
     print(dirname)
     parser = argparse.ArgumentParser()
