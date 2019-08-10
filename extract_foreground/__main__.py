@@ -11,7 +11,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--source_file", type=str, default=filename,
                         help='name of the video to extract foreground from')
-    parser.add_argument("-v", "--show_process", type=bool, default=False,
+    parser.add_argument("-v", "--show_process", type=bool, default=True,
                         help='shows the transformation of the image in run time')
     parser.add_argument("-o", "--output_filename", type=str, default=output_filename,
                         help='path of the output image')
